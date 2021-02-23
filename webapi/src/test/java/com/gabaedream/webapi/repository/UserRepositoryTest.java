@@ -16,35 +16,32 @@ import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@Nested
+@DisplayName("User repository는")
 @SpringBootTest
-class UserRepositoryTest {
+public class UserRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
-    @Nested
-    @DisplayName("User repository는")
-    public class userRepositoryTest{
+    @Test
+    @DisplayName("UserAggregate를 던지면 저장하고, id로 꺼내올 수 있다.")
+    void setGetTest() throws ServiceException {
+        UserAggregate randomAggregate = TestUtil.createRandomAggregate();
+        UserDTO savedDTO = userRepository.save(randomAggregate);
 
-        @Test
-        @DisplayName("UserAggregate를 던지면 저장하고, id로 꺼내올 수 있다.")
-        void setGetTest() throws ServiceException {
-            UserAggregate randomAggregate = TestUtil.createRandomAggregate();
-            UserDTO savedDTO = userRepository.save(randomAggregate);
+        String createdId = savedDTO.getUserId();
 
-            String createdId = savedDTO.getUserId();
+        UserAggregate findedUserAggregate = userRepository.findByUserId(createdId);
 
-            UserAggregate findedUserAggregate = userRepository.findByUserId(createdId);
+        UserDTO foundUserDTO = findedUserAggregate.toDTO();
 
-            UserDTO findedUserDTO = findedUserAggregate.toDTO();
+        assertThat(savedDTO, samePropertyValuesAs(foundUserDTO));
+    }
 
-            assertThat(savedDTO, samePropertyValuesAs(findedUserDTO));
-        }
-
-        @Test
-        @DisplayName("틀린 ID를 넣으면 ID NOT FOUND를 THROW 한다.")
-        void notFoundTest(){
-            assertThrows(ServiceException.class, () -> userRepository.findByUserId("InvalidId"));
-        }
+    @Test
+    @DisplayName("틀린 ID를 넣으면 NULL을 리턴 한다.")
+    void notFoundTest(){
+        UserAggregate invalidId = userRepository.findByUserId("InvalidId");
+        assertEquals(invalidId, null);
     }
 }
