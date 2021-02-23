@@ -15,12 +15,12 @@ public class UserRepository {
     @Autowired
     UserCRUDRepository userCRUDRepository;
 
-    public UserAggregate findByUserId(String userId) throws ServiceException {
+    public UserAggregate findByUserId(String userId) {
         Optional<UserDTO> result = userCRUDRepository.findByUserId(userId);
         if(result.isPresent()){
             return new UserAggregate(result.get());
         } else{
-            throw new ServiceException(ResultCode.USER_ID_NOT_FOUND, userId);
+            return null;
         }
     }
 

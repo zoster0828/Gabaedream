@@ -28,5 +28,4 @@ public class UserInfoController extends BaseController{
         UserAggregate newUser = userService.createNewUser(createUserRequest);
         return new DefaultView(HttpStatus.OK);
     }
-
 }
