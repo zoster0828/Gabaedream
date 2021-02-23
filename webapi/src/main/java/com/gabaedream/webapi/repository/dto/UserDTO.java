@@ -10,11 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Builder
+@EqualsAndHashCode
 @Table(name = "user_info")
 public class UserDTO {
     @Id
     @Column(name = "user_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String userId;
 
     @Column(name = "password", nullable = false)
@@ -23,11 +23,11 @@ public class UserDTO {
     @Column(name = "nick_name", nullable = false)
     String nickName;
 
-    @Column(name = "lagel_name", nullable = false)
+    @Column(name = "legal_name", nullable = false)
     String legalName;
 
     @Column(name = "phone_number", nullable = false)
-    Integer phoneNumber;
+    Long phoneNumber;
 
     @Column(name = "email", nullable = false)
     String email;
@@ -36,7 +36,7 @@ public class UserDTO {
     String address;
 
     @Column(name = "service_count", nullable = false)
-    String serviceCount;
+    Integer serviceCount;
 
     @Column(name = "rating", nullable = false)
     Float rating;

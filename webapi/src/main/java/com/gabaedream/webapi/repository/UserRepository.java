@@ -16,7 +16,7 @@ public class UserRepository {
     UserCRUDRepository userCRUDRepository;
 
     public UserAggregate findByUserId(String userId) throws ServiceException {
-        Optional<UserDTO> result = userCRUDRepository.findById(userId);
+        Optional<UserDTO> result = userCRUDRepository.findByUserId(userId);
         if(result.isPresent()){
             return new UserAggregate(result.get());
         } else{
@@ -24,7 +24,8 @@ public class UserRepository {
         }
     }
 
-    public void save(UserAggregate userAggregate) {
-        UserDTO userDTO = userCRUDRepository.save(userAggregate.toDTO());;
+    public UserDTO save(UserAggregate userAggregate) {
+        UserDTO userDTO = userCRUDRepository.save(userAggregate.toDTO());
+        return userDTO;
     }
 }

@@ -5,15 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserRequest {
+public class CreateUserRequest {
+    String userId;
     String password;
     String nickName;
     String legalName;
-    Integer phoneNumber;
+    Long phoneNumber;
     String email;
     String address;
-    String serviceCount;
-    Integer userStatus;
-    Float rating;
-    Boolean messenger;
 }

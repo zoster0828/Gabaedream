@@ -1,6 +1,6 @@
 package com.gabaedream.webapi.domain.aggregate;
 
-import com.gabaedream.webapi.interfaces.controller.requests.UserRequest;
+import com.gabaedream.webapi.interfaces.controller.requests.CreateUserRequest;
 import com.gabaedream.webapi.repository.dto.UserDTO;
 
 public class UserAggregate {
@@ -8,10 +8,10 @@ public class UserAggregate {
     String password;
     String nickName;
     String legalName;
-    Integer phoneNumber;
+    Long phoneNumber;
     String email;
     String address;
-    String serviceCount;
+    Integer serviceCount;
     Integer userStatus;
     Float rating;
     Boolean messenger;
@@ -27,11 +27,21 @@ public class UserAggregate {
         this.serviceCount = userDTO.getServiceCount();
         this.rating = userDTO.getRating();
         this.messenger = userDTO.getMessenger();
+        this.userStatus = userDTO.getUserStatus();
     }
 
-    public UserAggregate(UserRequest userRequest) {
-        this.userId = null;
-        this.password = userRequest.getPassword();
+    public UserAggregate(CreateUserRequest createUserRequest) {
+        this.userId = createUserRequest.getUserId();
+        this.password = createUserRequest.getPassword();
+        this.nickName = createUserRequest.getNickName();
+        this.legalName = createUserRequest.getLegalName();
+        this.phoneNumber = createUserRequest.getPhoneNumber();
+        this.email = createUserRequest.getEmail();
+        this.address = createUserRequest.getAddress();
+        this.serviceCount = 0;
+        this.userStatus = 1;
+        this.rating = 0f;
+        this.messenger = false;
     }
 
     public UserDTO toDTO() {
@@ -48,6 +58,7 @@ public class UserAggregate {
                 .rating(rating)
                 .messenger(messenger)
                 .build();
+
         return userDTO;
     }
 }

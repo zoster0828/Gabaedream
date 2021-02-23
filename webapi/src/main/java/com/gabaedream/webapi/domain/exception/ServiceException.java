@@ -1,13 +1,21 @@
 package com.gabaedream.webapi.domain.exception;
 
-public class ServiceException extends Throwable {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.exception.ContextedRuntimeException;
+
+public class ServiceException extends ContextedRuntimeException {
     ResultCode resultCode;
-
-    public ServiceException(ResultCode resultCode, String... additionalMessage) {
-
+    String message;
+    public ServiceException(ResultCode resultCode, Object... additionalMessage) {
+        super(resultCode.message);
+        this.resultCode = resultCode;
+        this.message = String.format(resultCode.message, additionalMessage);
     }
 
-    public String toResponseString() {
-        return null;
+    public String toResponseString() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonStr = mapper.writeValueAsString(this);
+        return jsonStr;
     }
 }
