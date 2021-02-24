@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DeliveryCRUDRepository extends JpaRepository<DeliveryCaseDTO, String> {
+public interface DeliveryMapper extends JpaRepository<DeliveryCaseDTO, String> {
     DeliveryCaseDTO save(DeliveryCaseDTO deliveryCaseDTO);
 
     DeliveryCaseDTO findById(int deliveryCaseId);

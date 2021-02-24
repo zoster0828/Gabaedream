@@ -9,17 +9,17 @@ import org.springframework.stereotype.Repository;
 public class DeliveryCaseRepository {
 
     @Autowired
-    DeliveryCRUDRepository deliveryCRUDRepository;
+    DeliveryMapper deliveryMapper;
 
     public DeliveryCaseAggregate save(DeliveryCaseAggregate deliveryCaseAggregate) {
         DeliveryCaseDTO deliveryCaseDTO = deliveryCaseAggregate.toDTO();
-        DeliveryCaseDTO savedDTO = deliveryCRUDRepository.save(deliveryCaseDTO);
+        DeliveryCaseDTO savedDTO = deliveryMapper.save(deliveryCaseDTO);
 
         return new DeliveryCaseAggregate(savedDTO);
     }
 
     public DeliveryCaseAggregate findById(int deliveryCaseId) {
-        DeliveryCaseDTO foundCaseDTO = deliveryCRUDRepository.findById(deliveryCaseId);
+        DeliveryCaseDTO foundCaseDTO = deliveryMapper.findById(deliveryCaseId);
         if(foundCaseDTO == null){
             return null;
         }

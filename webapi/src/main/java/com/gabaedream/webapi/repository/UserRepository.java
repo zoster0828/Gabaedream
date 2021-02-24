@@ -11,10 +11,10 @@ import java.util.Optional;
 public class UserRepository {
 
     @Autowired
-    UserCRUDRepository userCRUDRepository;
+    UserMapper userMapper;
 
     public UserAggregate findByUserId(String userId) {
-        Optional<UserDTO> result = userCRUDRepository.findByUserId(userId);
+        Optional<UserDTO> result = userMapper.findByUserId(userId);
         if(result.isPresent()){
             return new UserAggregate(result.get());
         } else{
@@ -23,7 +23,7 @@ public class UserRepository {
     }
 
     public UserDTO save(UserAggregate userAggregate) {
-        UserDTO userDTO = userCRUDRepository.save(userAggregate.toDTO());
+        UserDTO userDTO = userMapper.save(userAggregate.toDTO());
         return userDTO;
     }
 }

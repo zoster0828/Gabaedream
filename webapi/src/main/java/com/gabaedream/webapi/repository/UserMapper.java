@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserCRUDRepository extends JpaRepository<UserDTO, String> {
+public interface UserMapper extends JpaRepository<UserDTO, String> {
     Optional<UserDTO> findByUserId(String userId);
     UserDTO save(UserDTO userDTO);
 }
