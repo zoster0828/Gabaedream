@@ -4,8 +4,6 @@ import com.gabaedream.webapi.interfaces.controller.requests.CreateUserRequest;
 import com.gabaedream.webapi.repository.dto.UserDTO;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-
 @Getter
 public class UserAggregate {
     String userId;
