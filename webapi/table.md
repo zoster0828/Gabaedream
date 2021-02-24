@@ -31,4 +31,38 @@ CREATE TABLE user_info
 | rating        | decimal(24,18) | YES  |     | NULL    |       |
 | messenger     | tinyint(1)     | YES  |     | NULL    |       |
 +---------------+----------------+------+-----+---------+-------+
+
+CREATE TABLE `delivery_case` (
+	`id` BIGINT(12) NOT NULL AUTO_INCREMENT,
+	`start` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`destination` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`start_time` TIMESTAMP NOT NULL,
+	`end_tme` TIMESTAMP NOT NULL,
+	`price` INT(11) NOT NULL,
+	`status` INT(1) NOT NULL,
+	`sender_rating` DECIMAL(24,18) NULL DEFAULT NULL,
+	`messenger_rating` DECIMAL(24,18) NULL DEFAULT NULL,
+	`sender_id` VARCHAR(20) NOT NULL COLLATE 'utf8_general_ci',
+	`messenger_id` VARCHAR(20) NOT NULL COLLATE 'utf8_general_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `messenger_info` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`user_id` VARCHAR(20) NOT NULL COLLATE 'utf8_general_ci',
+	`start` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`destination` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`day` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`transportation` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
+	`min_price` INT(11) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
 ```
+

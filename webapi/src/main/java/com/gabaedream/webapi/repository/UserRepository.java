@@ -1,8 +1,6 @@
 package com.gabaedream.webapi.repository;
 
 import com.gabaedream.webapi.domain.aggregate.UserAggregate;
-import com.gabaedream.webapi.domain.exception.ResultCode;
-import com.gabaedream.webapi.domain.exception.ServiceException;
 import com.gabaedream.webapi.repository.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
