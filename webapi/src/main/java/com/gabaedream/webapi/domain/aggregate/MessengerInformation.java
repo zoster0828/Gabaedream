@@ -1,4 +1,4 @@
-package com.gabaedream.webapi.messenger.view.model;
+package com.gabaedream.webapi.domain.aggregate;
 
 import com.gabaedream.webapi.repository.dto.MessengerDTO;
 import lombok.Data;

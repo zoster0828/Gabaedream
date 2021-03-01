@@ -1,4 +1,4 @@
-package com.gabaedream.webapi.messenger.view.response;
+package com.gabaedream.webapi.interfaces.controller.view;
 
 import com.gabaedream.webapi.repository.dto.MessengerDTO;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.gabaedream.webapi.messenger.view.request;
+package com.gabaedream.webapi.interfaces.controller.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

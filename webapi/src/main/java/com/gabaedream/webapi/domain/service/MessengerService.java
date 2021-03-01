@@ -1,10 +1,10 @@
-package com.gabaedream.webapi.messenger;
+package com.gabaedream.webapi.domain.service;
 
 import com.gabaedream.webapi.domain.service.UserService;
 import com.gabaedream.webapi.repository.MessengerRepository;
 import com.gabaedream.webapi.repository.dto.MessengerDTO;
-import com.gabaedream.webapi.messenger.view.request.MessengerListParameter;
-import com.gabaedream.webapi.messenger.view.request.MessengerRegisterRequest;
+import com.gabaedream.webapi.interfaces.controller.requests.MessengerListParameter;
+import com.gabaedream.webapi.interfaces.controller.requests.MessengerRegisterRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
