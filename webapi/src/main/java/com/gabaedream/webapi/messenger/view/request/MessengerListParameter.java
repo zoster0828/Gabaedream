@@ -1,12 +1,8 @@
 package com.gabaedream.webapi.messenger.view.request;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 
 @Data
 public class MessengerListParameter {

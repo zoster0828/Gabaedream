@@ -4,10 +4,8 @@ import com.gabaedream.webapi.domain.aggregate.UserAggregate;
 import com.gabaedream.webapi.domain.exception.ServiceException;
 import com.gabaedream.webapi.domain.service.UserService;
 import com.gabaedream.webapi.interfaces.controller.requests.CreateUserRequest;
-import com.gabaedream.webapi.interfaces.controller.view.DefaultView;
 import com.gabaedream.webapi.interfaces.view.UserInfoView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

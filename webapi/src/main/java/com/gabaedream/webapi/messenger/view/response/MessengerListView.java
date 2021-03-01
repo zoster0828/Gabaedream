@@ -1,8 +1,6 @@
 package com.gabaedream.webapi.messenger.view.response;
 
-import com.gabaedream.webapi.common.Day;
 import com.gabaedream.webapi.messenger.repository.dto.MessengerDTO;
-import com.gabaedream.webapi.messenger.view.model.MessengerInformation;
 import lombok.Data;
 
 import java.util.List;
