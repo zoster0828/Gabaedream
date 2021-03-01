@@ -23,12 +23,12 @@ public class MessengerService {
     }
 
     public List<MessengerDTO>  getMessengerInformationWithUserId(String userId) {
+        userService.getUserWithId(userId);
         List<MessengerDTO> list = messengerRepository.findByUserId(userId);
         return list;
     }
 
     public MessengerDTO registerMessanger(MessengerRegisterRequest req) {
-
         userService.registerMessenger(req.getUserId());
 
         MessengerDTO dto = req.toMessengerDTO(req);
