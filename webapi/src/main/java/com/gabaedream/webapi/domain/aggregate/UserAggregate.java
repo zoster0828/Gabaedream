@@ -1,10 +1,12 @@
 package com.gabaedream.webapi.domain.aggregate;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.gabaedream.webapi.interfaces.controller.requests.CreateUserRequest;
 import com.gabaedream.webapi.repository.dto.UserDTO;
 import lombok.Getter;
 
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserAggregate {
     String userId;
     String password;

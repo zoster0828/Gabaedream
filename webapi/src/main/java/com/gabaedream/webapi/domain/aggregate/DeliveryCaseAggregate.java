@@ -1,11 +1,13 @@
 package com.gabaedream.webapi.domain.aggregate;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.gabaedream.webapi.domain.DomainConstants;
 import com.gabaedream.webapi.interfaces.controller.requests.CreateDeliveryCaseRequest;
 import com.gabaedream.webapi.repository.dto.DeliveryCaseDTO;
 import lombok.Getter;
 
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeliveryCaseAggregate {
     Integer id;
     String start;
