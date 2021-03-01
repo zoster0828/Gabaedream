@@ -24,8 +24,8 @@ public class UserInfoController extends BaseController{
     }
 
     @PostMapping("/user")
-    public DefaultView createNewUser(@RequestBody CreateUserRequest createUserRequest) throws ServiceException {
+    public UserInfoView createNewUser(@RequestBody CreateUserRequest createUserRequest) throws ServiceException {
         UserAggregate newUser = userService.createNewUser(createUserRequest);
-        return new DefaultView(HttpStatus.OK);
+        return new UserInfoView(newUser);
     }
 }
