@@ -4,11 +4,11 @@ import com.gabaedream.webapi.domain.aggregate.DeliveryCaseAggregate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public class DeliveryInfoView {
+    DeliveryCaseAggregate deliveryCaseAggregate;
 
     public DeliveryInfoView(DeliveryCaseAggregate deliveryCaseAggregate) {
-
+        this.deliveryCaseAggregate = deliveryCaseAggregate;
     }
 }
