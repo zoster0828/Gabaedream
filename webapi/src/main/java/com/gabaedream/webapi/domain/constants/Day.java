@@ -1,4 +1,4 @@
-package com.gabaedream.webapi.common;
+package com.gabaedream.webapi.domain.constants;
 
 /**
  * Day of the week

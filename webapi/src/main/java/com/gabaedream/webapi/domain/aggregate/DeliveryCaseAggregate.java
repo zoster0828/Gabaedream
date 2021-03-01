@@ -1,7 +1,7 @@
 package com.gabaedream.webapi.domain.aggregate;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.gabaedream.webapi.domain.DomainConstants;
+import com.gabaedream.webapi.domain.constants.DeliveryStatus;
 import com.gabaedream.webapi.interfaces.controller.requests.CreateDeliveryCaseRequest;
 import com.gabaedream.webapi.repository.dto.DeliveryCaseDTO;
 import lombok.Getter;
@@ -25,7 +25,7 @@ public class DeliveryCaseAggregate {
         this.start = createDeliveryCaseRequest.getStart();
         this.destination = createDeliveryCaseRequest.getDestination();
         this.price = createDeliveryCaseRequest.getPrice();
-        this.status = DomainConstants.DELIVERY_CREATED;
+        this.status = DeliveryStatus.CREATED;
         this.senderId = createDeliveryCaseRequest.getSenderId();
         this.messengerId = createDeliveryCaseRequest.getMessengerId();
     }
@@ -63,26 +63,26 @@ public class DeliveryCaseAggregate {
     }
 
     public void start() {
-        this.status = DomainConstants.DELIVERY_STARTED;
+        this.status = DeliveryStatus.STARTED;
         this.startTime = System.currentTimeMillis();
     }
 
     public void complete() {
-        this.status = DomainConstants.DELIVERY_COMPLETED;
+        this.status = DeliveryStatus.COMPLETED;
         this.endTime = System.currentTimeMillis();
     }
 
     public void cancel() {
-        this.status = DomainConstants.DELIVERY_CANCELD;
+        this.status = DeliveryStatus.CANCELD;
         this.endTime = System.currentTimeMillis();
     }
 
     public void accepted() {
-        this.status = DomainConstants.DELIVERY_ACCEPTED;
+        this.status = DeliveryStatus.ACCEPTED;
     }
 
     public void fail() {
-        this.status = DomainConstants.DELIVERY_FAILED;
+        this.status = DeliveryStatus.FAILED;
         this.endTime = System.currentTimeMillis();
     }
 }

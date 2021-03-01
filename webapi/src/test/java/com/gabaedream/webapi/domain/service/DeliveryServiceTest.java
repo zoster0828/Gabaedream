@@ -1,17 +1,15 @@
 package com.gabaedream.webapi.domain.service;
 
 import com.gabaedream.webapi.TestUtil;
-import com.gabaedream.webapi.domain.DomainConstants;
+import com.gabaedream.webapi.domain.constants.DeliveryStatus;
 import com.gabaedream.webapi.domain.aggregate.DeliveryCaseAggregate;
 import com.gabaedream.webapi.domain.exception.ServiceException;
-import com.gabaedream.webapi.interfaces.controller.requests.CreateDeliveryCaseRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.security.Provider;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,11 +46,11 @@ class DeliveryServiceTest {
     @DisplayName("delivery status를 잘 업데이트 한다.")
     void update_status_success(){
         Map<String, Integer> statusMap = new HashMap<>();
-        statusMap.put("start", DomainConstants.DELIVERY_STARTED);
-        statusMap.put("cancel", DomainConstants.DELIVERY_CANCELD);
-        statusMap.put("complete", DomainConstants.DELIVERY_COMPLETED);
-        statusMap.put("accept", DomainConstants.DELIVERY_ACCEPTED);
-        statusMap.put("fail", DomainConstants.DELIVERY_FAILED);
+        statusMap.put("start", DeliveryStatus.STARTED);
+        statusMap.put("cancel", DeliveryStatus.CANCELD);
+        statusMap.put("complete", DeliveryStatus.COMPLETED);
+        statusMap.put("accept", DeliveryStatus.ACCEPTED);
+        statusMap.put("fail", DeliveryStatus.FAILED);
 
         for(String status : statusMap.keySet()) {
             DeliveryCaseAggregate newDeliveryCase = deliveryCaseService.createCase(TestUtil.randomCreateDeliveryCaseRequest());
