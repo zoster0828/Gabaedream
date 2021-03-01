@@ -9,9 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Nested
 @DisplayName("DeliveryCase repository는")
@@ -40,6 +43,23 @@ class DeliveryCaseRepositoryTest {
     void notFoundTest(){
         DeliveryCaseAggregate invalidId = deliveryCaseRepository.findById(999999);
         assertEquals(invalidId, null);
+    }
+
+    @Test
+    @DisplayName("findByMessengerId는 userId가 messenger로 등록된 모든 list를 반환한다.")
+    void findByMessengerIdest(){
+        DeliveryCaseAggregate randomAggregate = TestUtil.createRandomDeliveryCaseAggregate();
+
+        for(int i = 0 ; i < 10 ; i ++) {
+            deliveryCaseRepository.save(randomAggregate);
+        }
+
+        List<DeliveryCaseAggregate> byMessengerId = deliveryCaseRepository.findByMessengerId(randomAggregate.getMessengerId());
+
+        assertTrue(byMessengerId.size() == 10);
+        for(DeliveryCaseAggregate dca : byMessengerId){
+            System.out.println(dca);
+        }
     }
 
 }

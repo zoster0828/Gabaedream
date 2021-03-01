@@ -1,4 +1,4 @@
-package com.gabaedream.webapi.messenger.repository.dto;
+package com.gabaedream.webapi.repository.dto;
 
 import lombok.*;
 

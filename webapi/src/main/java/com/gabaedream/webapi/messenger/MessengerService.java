@@ -1,8 +1,8 @@
 package com.gabaedream.webapi.messenger;
 
 import com.gabaedream.webapi.domain.service.UserService;
-import com.gabaedream.webapi.messenger.repository.MessengerRepository;
-import com.gabaedream.webapi.messenger.repository.dto.MessengerDTO;
+import com.gabaedream.webapi.repository.MessengerRepository;
+import com.gabaedream.webapi.repository.dto.MessengerDTO;
 import com.gabaedream.webapi.messenger.view.request.MessengerListParameter;
 import com.gabaedream.webapi.messenger.view.request.MessengerRegisterRequest;
 import org.springframework.stereotype.Service;

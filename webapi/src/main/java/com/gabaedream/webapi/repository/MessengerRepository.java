@@ -1,6 +1,6 @@
-package com.gabaedream.webapi.messenger.repository;
+package com.gabaedream.webapi.repository;
 
-import com.gabaedream.webapi.messenger.repository.dto.MessengerDTO;
+import com.gabaedream.webapi.repository.dto.MessengerDTO;
 import lombok.Data;
 import org.springframework.stereotype.Repository;
 

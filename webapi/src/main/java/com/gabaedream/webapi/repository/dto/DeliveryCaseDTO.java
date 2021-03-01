@@ -47,4 +47,10 @@ public class DeliveryCaseDTO {
 
     @Column(name = "messenger_id", nullable = false)
     String messengerId;
+
+    @Column(name = "server_created_time")
+    Long serverCreatedTime;
+
+    @Column(name = "server_updated_time")
+    Long serverUpdatedTime;
 }

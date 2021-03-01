@@ -1,6 +1,6 @@
-package com.gabaedream.webapi.messenger.repository;
+package com.gabaedream.webapi.repository;
 
-import com.gabaedream.webapi.messenger.repository.dto.MessengerDTO;
+import com.gabaedream.webapi.repository.dto.MessengerDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

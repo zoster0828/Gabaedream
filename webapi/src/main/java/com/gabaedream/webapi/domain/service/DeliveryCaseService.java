@@ -8,6 +8,8 @@ import com.gabaedream.webapi.repository.DeliveryCaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeliveryCaseService {
 
@@ -59,5 +61,9 @@ public class DeliveryCaseService {
         } else {
             return foundAggregate;
         }
+    }
+
+    public List<DeliveryCaseAggregate> getCaseWithMessengerId(String userId) {
+        return deliveryCaseRepository.findByMessengerId(userId);
     }
 }

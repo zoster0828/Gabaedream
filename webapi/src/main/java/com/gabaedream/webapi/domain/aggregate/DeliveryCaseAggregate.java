@@ -5,8 +5,10 @@ import com.gabaedream.webapi.domain.constants.DeliveryStatus;
 import com.gabaedream.webapi.interfaces.controller.requests.CreateDeliveryCaseRequest;
 import com.gabaedream.webapi.repository.dto.DeliveryCaseDTO;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeliveryCaseAggregate {
     Integer id;
@@ -20,6 +22,8 @@ public class DeliveryCaseAggregate {
     Float messengerRating;
     String senderId;
     String messengerId;
+    Long serverCreatedTime;
+    Long serverUpdatedTime;
 
     public DeliveryCaseAggregate(CreateDeliveryCaseRequest createDeliveryCaseRequest) {
         this.start = createDeliveryCaseRequest.getStart();
@@ -28,6 +32,8 @@ public class DeliveryCaseAggregate {
         this.status = DeliveryStatus.CREATED;
         this.senderId = createDeliveryCaseRequest.getSenderId();
         this.messengerId = createDeliveryCaseRequest.getMessengerId();
+        this.serverCreatedTime = System.currentTimeMillis();
+        this.serverUpdatedTime = System.currentTimeMillis();
     }
 
     public DeliveryCaseAggregate(DeliveryCaseDTO savedDTO) {
@@ -42,6 +48,8 @@ public class DeliveryCaseAggregate {
         this.messengerRating = savedDTO.getMessengerRating();
         this.senderId = savedDTO.getSenderId();
         this.messengerId = savedDTO.getMessengerId();
+        this.serverCreatedTime = savedDTO.getServerCreatedTime();
+        this.serverUpdatedTime = savedDTO.getServerUpdatedTime();
     }
 
     public DeliveryCaseDTO toDTO() {
@@ -57,6 +65,8 @@ public class DeliveryCaseAggregate {
                 .messengerRating(messengerRating)
                 .senderId(senderId)
                 .messengerId(messengerId)
+                .serverCreatedTime(serverCreatedTime)
+                .serverUpdatedTime(serverUpdatedTime)
                 .build();
 
         return deliveryCaseDTO;
