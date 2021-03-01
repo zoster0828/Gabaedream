@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="logFileName">gabaedream</Property>
+        <Property name="consoleLayout">%level [%t] %m%n%throwable</Property>
+        <Property name="fileLayout">%d{ISO8601} %level [%t] %c{1}.%M:%L - %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${consoleLayout}"/>
+        </Console>
+
+        <RollingFile name="FILE" fileName="logs/${logFileName}.log"
+                     filePattern="logs/${logFileName}.%d{yyyy-MM-dd-hh}.log">
+            <PatternLayout pattern="${fileLayout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+        </logger>
+
+        <logger name="com.gabaedream.webapi" additivity="false">
+            <AppenderRef ref="CONSOLE" level="info"/>
+            <AppenderRef ref="FILE" level="info"/>
+        </logger>
+
+        <root level="info">
+            <AppenderRef ref="CONSOLE"/>
+        </root>
+    </Loggers>
+</Configuration>
