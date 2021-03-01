@@ -3,6 +3,7 @@ package com.gabaedream.webapi.messenger.repository;
 import com.gabaedream.webapi.common.Day;
 import com.gabaedream.webapi.domain.aggregate.UserAggregate;
 import com.gabaedream.webapi.messenger.repository.dto.MessengerDTO;
+import com.gabaedream.webapi.messenger.view.request.MessengerListParameter;
 import com.gabaedream.webapi.repository.dto.UserDTO;
 import lombok.Data;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,5 +36,12 @@ public class MessengerRepository  {
         return result;
     }
 
-
+    public List<MessengerDTO> findByFilter(String filter, int limit, int offset) {
+        Optional<List<MessengerDTO>> result = mapper.findByFilter(filter, limit, offset);
+        if(result.isPresent()){
+            return result.get();
+        } else{
+            return null;
+        }
+    }
 }
