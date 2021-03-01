@@ -68,4 +68,11 @@ class DeliveryServiceTest {
 
         assertThrows(ServiceException.class, () -> deliveryCaseService.updateDeliveryCaseStatus(newDeliveryCase.getId(), "invalidCase"));
     }
+
+    @Test
+    @DisplayName("없는 delivery id를 넣으면 error를 반환한다.")
+    void update_status_not_exists(){
+
+        assertThrows(ServiceException.class, () -> deliveryCaseService.updateDeliveryCaseStatus(59999,"start"));
+    }
 }

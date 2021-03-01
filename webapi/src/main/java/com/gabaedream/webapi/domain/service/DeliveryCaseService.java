@@ -24,7 +24,9 @@ public class DeliveryCaseService {
 
     public DeliveryCaseAggregate updateDeliveryCaseStatus(int deliveryCaseId, String status) {
         DeliveryCaseAggregate deliveryCase = deliveryCaseRepository.findById(deliveryCaseId);
-
+        if(deliveryCase == null){
+            throw new ServiceException(ResultCode.DELIVERY_ID_NOT_FOUND, deliveryCaseId);
+        }
         switch(status){
             case "accept":
                 deliveryCase.accepted();
