@@ -4,6 +4,7 @@
         <Property name="logFileName">gabaedream</Property>
         <Property name="consoleLayout">%level [%t] %m%n%throwable</Property>
         <Property name="fileLayout">%d{ISO8601} %level [%t] %c{1}.%M:%L - %m%n</Property>
+        <Property name="accLayout">%d{ISO8601} [%t] %m%n</Property>
     </Properties>
 
     <Appenders>
@@ -12,8 +13,16 @@
         </Console>
 
         <RollingFile name="FILE" fileName="logs/${logFileName}.log"
-                     filePattern="logs/${logFileName}.%d{yyyy-MM-dd-hh}.log">
+                     filePattern="logs/${logFileName}.log.%d{yyyyMMddhh}">
             <PatternLayout pattern="${fileLayout}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="ACC" fileName="logs/${logFileName}_ACC.log"
+                     filePattern="logs/${logFileName}_ACC.log.%d{yyyyMMddhh}">
+            <PatternLayout pattern="${accLayout}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
             </Policies>
@@ -28,6 +37,11 @@
         <logger name="com.gabaedream.webapi" additivity="false">
             <AppenderRef ref="CONSOLE" level="info"/>
             <AppenderRef ref="FILE" level="info"/>
+        </logger>
+
+        <logger name="ACC" additivity="false">
+            <AppenderRef ref="CONSOLE" level="info"/>
+            <AppenderRef ref="ACC" level="info"/>
         </logger>
 
         <root level="info">
