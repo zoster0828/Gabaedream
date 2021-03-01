@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@ResponseBody
 @CrossOrigin(origins = "*")
 public class DeliveryCaseController extends BaseController{
 
