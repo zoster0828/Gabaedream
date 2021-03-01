@@ -1,6 +1,7 @@
 package com.gabaedream.webapi.messenger;
 
 import com.gabaedream.webapi.domain.exception.ServiceException;
+import com.gabaedream.webapi.interfaces.controller.BaseController;
 import com.gabaedream.webapi.interfaces.controller.view.DefaultView;
 import com.gabaedream.webapi.messenger.repository.dto.MessengerDTO;
 import com.gabaedream.webapi.messenger.view.request.MessengerListParameter;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @apiNote 메신저 CRUD API
  */
 @RestController
-public class MessengerController {
+public class MessengerController extends BaseController {
     private final MessengerService messengerService;
 
     public MessengerController(MessengerService messengerService) {

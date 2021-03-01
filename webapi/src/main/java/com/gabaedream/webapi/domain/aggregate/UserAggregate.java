@@ -65,4 +65,8 @@ public class UserAggregate {
 
         return userDTO;
     }
+
+    public void registerMessenger() {
+        this.messenger = true;
+    }
 }

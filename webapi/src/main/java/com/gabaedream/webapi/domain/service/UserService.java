@@ -24,6 +24,7 @@ public class UserService {
         }
     }
 
+
     public UserAggregate createNewUser(CreateUserRequest createUserRequest) {
         UserAggregate findFirst = userRepository.findByUserId(createUserRequest.getUserId());
 
@@ -34,5 +35,11 @@ public class UserService {
         } else {
             throw new ServiceException(ResultCode.ALREADY_EXISTS_USER, createUserRequest.getUserId());
         }
+    }
+
+    public void registerMessenger(String userId) {
+        UserAggregate foundUser = getUserWithId(userId);
+        foundUser.registerMessenger();
+        userRepository.save(foundUser);
     }
 }

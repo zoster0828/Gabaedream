@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Nested
 @DisplayName("User service는")
@@ -48,4 +48,22 @@ class UserServiceTest {
         assertThrows(ServiceException.class, () -> userService.getUserWithId("invalidId"));
     }
 
+    @Test
+    @DisplayName("Register messenger는 messenger status를 변경한다.")
+    void registerMessenger(){
+        UserAggregate newUser = userService.createNewUser(TestUtil.randomCreateUserRequest());
+
+        assertFalse(newUser.getMessenger());
+
+        userService.registerMessenger(newUser.getUserId());
+        UserAggregate registeredUser = userService.getUserWithId(newUser.getUserId());
+
+        assertTrue(registeredUser.getMessenger());
+    }
+
+    @Test
+    @DisplayName("Register messenger는 없는 유저면 error를 던진다.")
+    void registerMessenger_fail(){
+        assertThrows(ServiceException.class, () -> userService.registerMessenger("invalidId"));
+    }
 }
